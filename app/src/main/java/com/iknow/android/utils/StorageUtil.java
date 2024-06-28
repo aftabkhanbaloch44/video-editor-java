@@ -5,8 +5,9 @@ import android.content.Context;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
-import com.iknow.android.BuildConfig;
 import iknow.android.utils.BaseUtils;
+import iknow.android.utils.BuildConfig;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Locale;

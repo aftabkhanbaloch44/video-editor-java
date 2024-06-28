@@ -18,7 +18,6 @@ import android.view.ViewConfiguration;
 import androidx.annotation.Nullable;
 import com.iknow.android.R;
 import com.iknow.android.features.trim.VideoTrimmerUtil;
-import com.iknow.android.utils.ToastUtil;
 
 import iknow.android.utils.DateUtil;
 import iknow.android.utils.UnitConverter;
@@ -61,7 +60,7 @@ public class RangeSeekBarView extends View {
   private double min_width = 1;//最小裁剪距离
   private boolean notifyWhileDragging = false;
   private OnRangeSeekBarChangeListener mRangeSeekBarChangeListener;
-  private int whiteColorRes = getContext().getResources().getColor(R.color.white);
+  private int orangeColor = getContext().getResources().getColor(R.color.orange);
 
   public enum Thumb {
     MIN, MAX
@@ -112,20 +111,20 @@ public class RangeSeekBarView extends View {
     paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     rectPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     rectPaint.setStyle(Paint.Style.FILL);
-    rectPaint.setColor(whiteColorRes);
+    rectPaint.setColor(orangeColor);
 
     mVideoTrimTimePaintL.setStrokeWidth(3);
     mVideoTrimTimePaintL.setARGB(255, 51, 51, 51);
     mVideoTrimTimePaintL.setTextSize(28);
     mVideoTrimTimePaintL.setAntiAlias(true);
-    mVideoTrimTimePaintL.setColor(whiteColorRes);
+    mVideoTrimTimePaintL.setColor(orangeColor);
     mVideoTrimTimePaintL.setTextAlign(Paint.Align.LEFT);
 
     mVideoTrimTimePaintR.setStrokeWidth(3);
     mVideoTrimTimePaintR.setARGB(255, 51, 51, 51);
     mVideoTrimTimePaintR.setTextSize(28);
     mVideoTrimTimePaintR.setAntiAlias(true);
-    mVideoTrimTimePaintR.setColor(whiteColorRes);
+    mVideoTrimTimePaintR.setColor(orangeColor);
     mVideoTrimTimePaintR.setTextAlign(Paint.Align.RIGHT);
   }
 
@@ -293,8 +292,10 @@ public class RangeSeekBarView extends View {
     }
     if (Thumb.MIN.equals(pressedThumb)) {
       // screenToNormalized(x)-->得到规格化的0-1的值
+      mStartPosition = normalizedToValue(normalizedMinValueTime);
       setNormalizedMinValue(screenToNormalized(x, 0));
     } else if (Thumb.MAX.equals(pressedThumb)) {
+      mEndPosition = normalizedToValue(normalizedMaxValueTime);
       setNormalizedMaxValue(screenToNormalized(x, 1));
     }
   }
@@ -336,7 +337,7 @@ public class RangeSeekBarView extends View {
           current_width = left_length;
         }
 
-        if (current_width < thumbWidth * 2 / 3) {
+        if (current_width < (double) (thumbWidth * 2) / 3) {
           current_width = 0;
         }
 

@@ -8,9 +8,7 @@ package com.iknow.android.interfaces;
  */
 public interface VideoTrimListener {
     void onTrimStart();
-    void onTrimProgress();
-    void onTrimSuccess();
+    void onTrimSuccess(String path);
     void onTrimFailure();
-    void onTrimFinish(String url);
     void onTrimCancel();
 }

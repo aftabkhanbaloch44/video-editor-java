@@ -2,7 +2,6 @@ package com.iknow.android.features.trim;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +20,12 @@ import java.util.List;
  * version: 1.0
  * description:
  */
-public class VideoTrimmerAdapter extends RecyclerView.Adapter {
-  private List<Bitmap> mBitmaps = new ArrayList<>();
+public class VideoThumbsAdapter extends RecyclerView.Adapter {
+  public List<Bitmap> mBitmaps = new ArrayList<>();
   private LayoutInflater mInflater;
   private Context context;
 
-  public VideoTrimmerAdapter(Context context) {
+  public VideoThumbsAdapter(Context context) {
     this.context = context;
     this.mInflater = LayoutInflater.from(context);
   }

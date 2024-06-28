@@ -1,111 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    android:id="@+id/rlRoot"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:id="@+id/layout_surface_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/layout"
-        android:background="@android:color/black"
-        android:gravity="center">
 
-        <com.iknow.android.widget.ZVideoView
-            android:id="@+id/video_loader"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true" />
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/layout"
-        android:layout_width="match_parent"
+    <FrameLayout
+        android:id="@+id/video_frames_layout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical"
-        android:background="@android:color/black">
+        tools:ignore="UselessParent">
 
-
-
-        <FrameLayout
-            android:id="@+id/video_frames_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/video_frames_recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_gravity="bottom"
-                android:nestedScrollingEnabled="false"
-                tools:background="@android:color/holo_green_light"
-                tools:ignore="UnusedAttribute" />
-
-            <ImageView
-                android:id="@+id/positionIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="35dp"
-                android:contentDescription="@null"
-                android:src="@drawable/icon_seek_bar"
-                tools:ignore="RtlHardcoded" />
-
-            <LinearLayout
-                android:id="@+id/seekBarLayout"
-                android:layout_width="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_height="60dp"
-                android:layout_gravity="bottom"
-                android:gravity="bottom"
-                android:orientation="vertical" />
-
-
-        </FrameLayout>
-
-
-        <FrameLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/video_frames_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="bottom"
+            android:nestedScrollingEnabled="false"
+            tools:background="@android:color/holo_green_light"
+            tools:ignore="UnusedAttribute" />
+
+        <ImageView
+            android:id="@+id/positionIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="horizontal"
-            android:visibility="visible">
+            android:contentDescription="@null"
+            android:src="@drawable/icon_seek_bar"
+            android:visibility="gone"
+            tools:ignore="RtlHardcoded" />
 
-            <TextView
-                android:id="@+id/cancelBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="@string/back"
-                android:textColor="@android:color/white"
-                android:textSize="16dp" />
+        <LinearLayout
+            android:id="@+id/seekBarLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:orientation="vertical"
+            android:visibility="gone"/>
 
-            <ImageView
-                android:id="@+id/icon_video_play"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:padding="12dp"
-                android:src="@drawable/ic_video_play_black" />
 
-            <TextView
-                android:id="@+id/finishBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="right"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="@string/finish"
-                android:textColor="@android:color/holo_green_dark"
-                android:textSize="16dp" />
+    </FrameLayout>
 
-        </FrameLayout>
 
-    </LinearLayout>
 </RelativeLayout>

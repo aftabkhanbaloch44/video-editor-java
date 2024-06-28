@@ -7,4 +7,11 @@
         <attr name="android:requiresFadingEdge" />
         <attr name="android:fadingEdgeLength" />
     </declare-styleable>
+
+
+    <declare-styleable name="VideoTrimmerView">
+        <attr name="video_view" format="reference" />
+    </declare-styleable>
+
+
 </resources>
